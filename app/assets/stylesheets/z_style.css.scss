@@ -1,0 +1,74 @@
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: Courier, verdana, arial, helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+p, ol, ul, td {
+  font-family: Courier, verdana, arial, helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+textarea, pre {
+  font-family: Courier;
+  font-size: 14px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+}
+
+.back_white {
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(top,#fff,#fff);
+  background-image: -o-linear-gradient(top,#fff,#fff);
+  background-image: linear-gradient(top,#fff,#fff);
+  -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0), inset 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0),inset 0 0 0 rgba(0, 0, 0, 0);
+  border: 0px #000 solid;
+  color: #000;
+}
+
+.navbar {
+  color: #000;
+}
+
+.navbar-inner {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+.navbar .nav li a {
+  color: #000;
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+.navbar .nav .active a, .navbar .nav .active a:hover {
+  background-color: #000;
+}
+
+.padding10 {
+  padding: 10px 0px 10px 0px;
+}
+
+a {
+  color: #000;
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+.nav li a:hover {
+  background-color: #000;
+}

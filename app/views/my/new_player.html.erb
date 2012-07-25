@@ -1,0 +1,17 @@
+
+<h1>Entry Player</h1>
+
+<%= form_for :player, url: { action: "entry_player" } do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Entry", 'data-disable-with' => "Entry" %>
+  </div>
+<% end %>
+
+<br />
+
+<%= link_to "MyPage", action: "index" %>

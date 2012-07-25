@@ -1,0 +1,17 @@
+
+<h1>Editing Player</h1>
+
+<%= form_for :player, url: { action: "update_player", id: @player.try(:id) } do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t( "menu.update" ), 'data-disable-with' => t( "menu.update" ) %>
+  </div>
+<% end %>
+
+<br />
+
+<%= link_to "MyPage", action: "index" %>

@@ -8,33 +8,49 @@
 </head>
 <body>
 
-<% if current_user %>
-  <%# ログイン済み %>
-  <%= link_to_unless( current_user.screen_name.blank?, image_tag( current_user.image, size: "20x20" ), "https://twitter.com/#!/#{current_user.screen_name}", target: "_blank" ) %>
-  <%= current_user.screen_name %> :
-   || <%= link_to "Logout", logout_path %>
-<% else %>
-  <%# 未ログイン %>
-  <%= link_to "Login", "/auth/#{Settings.provider}" %>
-<% end %>
+  <div class="container">
 
-<%# 通知／エラーメッセージ %>
-<%= simple_format( flash[:notice], style: "color: green;" ) unless flash[:notice].blank? %>
-<%= simple_format( flash[:alert], style: "color: red;" ) unless flash[:alert].blank? %>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner back_white">
+      <div class="container">
+        <ul class="nav">
+          <li class="<%= params[:controller] == 'top' ? 'active' : '' %>"><%= link_to Settings.app_name, :root, class: "brand" %></li>
+          <% unless session[:user_id].blank? %>
+            <%# ログイン済み %>
+            <li><%= link_to_unless( current_user.screen_name.blank?, image_tag( current_user.image, size: "20x20" ), "https://twitter.com/#!/#{current_user.screen_name}", target: "_blank" ) %></li>
+            <li class="<%= params[:controller] == 'players' ? 'active' : '' %>"><%= link_to( "Players", { controller: "players" } ) %></li>
+            <li class="<%= params[:controller] == 'jobs' ? 'active' : '' %>"><%= link_to( "Jobs", { controller: "jobs" } ) %></li>
+            <li class="<%= params[:controller] == 'my' ? 'active' : '' %>"><%= link_to( "MyPage", { controller: "my" } ) %></li>
+            <li><%= link_to( "Logout", logout_path ) %></li>
+          <% else %>
+            <%# 未ログイン %>
+            <li><%= link_to "Login", "/auth/#{Settings.provider}" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-<%= yield %>
+  <div style="margin: 50px 0px 0px 0px;"><div>
 
-<br />
-<br />
+  <%# 通知／エラーメッセージ %>
+  <%= simple_format( flash[:notice], style: "color: green;" ) unless flash[:notice].blank? %>
+  <%= simple_format( flash[:alert], style: "color: red;" ) unless flash[:alert].blank? %>
 
-<center>
-  Developed by <a href="https://twitter.com/#!/<%= Settings.programmer_twitter_id %>/" target="_blank">@<%= Settings.programmer_twitter_id %></a>,
-  Designed by <a href="https://twitter.com/#!/<%= Settings.designer_twitter_id %>/" target="_blank">@<%= Settings.designer_twitter_id %></a>,
-  Licence by <a href="https://creativecommons.org/licenses/by-nc-sa/2.1/jp/" target="_blank">CC BY-NC-SA 2.1</a>
-</center>
+  <%= yield %>
 
-<br />
+  <br />
+  <br />
 
+  <center>
+    Developed by <a href="https://twitter.com/#!/<%= Settings.programmer_twitter_id %>/" target="_blank">@<%= Settings.programmer_twitter_id %></a>,
+    Designed by <a href="https://twitter.com/#!/<%= Settings.designer_twitter_id %>/" target="_blank">@<%= Settings.designer_twitter_id %></a>,
+    Licence by <a href="https://creativecommons.org/licenses/by-nc-sa/2.1/jp/" target="_blank">CC BY-NC-SA 2.1</a>
+  </center>
+
+  <br />
+
+  </div>
 
 </body>
 </html>

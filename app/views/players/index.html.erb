@@ -1,0 +1,16 @@
+
+<h1>Listing players</h1>
+
+<table>
+  <tr>
+    <th>User Name</th>
+    <th></th>
+  </tr>
+
+<% @players.each{ |player| %>
+  <tr>
+    <td><%= player.user.screen_name %></td>
+    <td><%= link_to t( "menu.show" ), action: "show", id: player.id %></td>
+  </tr>
+<% } %>
+</table>

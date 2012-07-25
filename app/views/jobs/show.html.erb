@@ -1,0 +1,10 @@
+<p>
+  <b>Title:</b><%= @job.title %>
+</p>
+
+<p>
+  <b>Content:</b><%= @job.content %>
+</p>
+
+<%= link_to t( "menu.edit" ), action: "edit", id: @job.id %>
+ | <%= link_to t( "menu.list" ), action: "index" %>

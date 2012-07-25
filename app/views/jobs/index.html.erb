@@ -1,0 +1,33 @@
+
+<h1>Listing jobs</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Title</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @jobs.each{ |job| %>
+  <tr>
+    <td><%= job.user_id %></td>
+    <td><%= job.title %></td>
+    <td><%= job.content %></td>
+    <td><%= link_to t( "menu.show" ), action: "show", id: job.id %></td>
+    <td><%= link_to t( "menu.edit" ), action: "edit", id: job.id %></td>
+    <td><%= link_to t( "menu.destroy" ), { action: "destroy", id: job.id }, onclick: "return confirm('本当に削除してよろしいですか？');" %></td>
+  </tr>
+<% } %>
+</table>
+
+<br />
+
+<%= link_to t( "menu.new" ), action: "new" %>
+
+<br />
+<br />
+
+<%= link_to t( "menu.top" ), :root %>

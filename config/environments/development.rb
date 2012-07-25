@@ -38,4 +38,7 @@ RedShooter::Application.configure do
 
   # For LogRotate
   config.logger = Logger.new( 'log/development.log', 5, 1*1024*1024 )  # 1MB * 5
+
+  # エラー回避「SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed」
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 end

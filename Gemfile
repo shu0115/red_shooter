@@ -52,6 +52,8 @@ gem "tapp"
 gem 'rails_config'
 gem 'omniauth-scaffold', :group => :development
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
 
 # For Custom Template And Haml
 gem 'custom-template', :group => :development

@@ -1,0 +1,18 @@
+
+<ul class="nav nav-tabs nav-stacked">
+  <li class="row span3 offset1 padding10">
+    <% if Player.where( user_id: session[:user_id] ).exists? %>
+      <%= link_to "Edit Player", action: "edit_player" %>
+    <% else %>
+      <%= link_to "Entry Player", action: "new_player" %>
+    <% end %>
+  </li>
+
+  <li class="row span3 offset1 padding10">
+    <% if Corporation.where( user_id: session[:user_id] ).exists? %>
+      <%= link_to "Edit Corporation", action: "edit_corporation" %>
+    <% else %>
+      <%= link_to "Entry Corporation", action: "new_corporation" %>
+    <% end %>
+  </li>
+</ul>

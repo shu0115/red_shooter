@@ -1,0 +1,21 @@
+
+<h1>Editing job</h1>
+
+<%= form_for :job, url: { action: "update", id: @job.id } do |f| %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t( "menu.update" ), 'data-disable-with' => t( "menu.update" ) %>
+  </div>
+<% end %>
+
+<%= link_to t( "menu.show" ), action: "show", id: @job.id %>
+ | <%= link_to t( "menu.list" ), action: "index" %>

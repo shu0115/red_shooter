@@ -2,6 +2,9 @@
 class User < ActiveRecord::Base
   attr_accessible :provider, :uid, :name, :screen_name, :image, :token, :secret
 
+  has_one :player
+  has_one :corporation
+
   private
 
   #---------------------------#
