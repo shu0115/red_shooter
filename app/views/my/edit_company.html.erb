@@ -1,7 +1,12 @@
 
-<h1>Editing Player</h1>
+<h1>Editing Company</h1>
 
-<%= form_for :player, url: { action: "update_player", id: @player.try(:id) } do |f| %>
+<%= form_for :company, url: { action: "update_company", id: @company.id } do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
   <div class="field">
     <%= f.label :email %>
     <%= f.text_field :email %>
@@ -20,4 +25,4 @@
 <br />
 
 <%= link_to "MyPage", action: "index" %>
-| <%= link_to "Show", { action: "show_player" }, style: "display: inline;" %>
+| <%= link_to "Show", { action: "show_company", id: @company.id }, style: "display: inline;" %>

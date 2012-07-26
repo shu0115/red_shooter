@@ -72,3 +72,11 @@ a {
 .nav li a:hover {
   background-color: #000;
 }
+
+.display_inline {
+  display: inline;
+}
+
+.nav li a .display_inline {
+  display: inline;
+}

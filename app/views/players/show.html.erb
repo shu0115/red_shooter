@@ -1,6 +1,15 @@
 
 <p>
-  <b>User Name:</b><%= @player.user.screen_name %>
+  <b>User:</b><%= @player.user.screen_name %>
+</p>
+
+<p>
+  <b>Name:</b><%= @player.user.name %>
+</p>
+
+<p>
+  <b>Content:</b><br />
+  <%= raw show_markdown( @player.content ) %>
 </p>
 
 <%= link_to t( "menu.list" ), action: "index" %>

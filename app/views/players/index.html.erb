@@ -1,15 +1,17 @@
 
-<h1>Listing players</h1>
+<h3>Listing players</h3>
 
 <table>
   <tr>
-    <th>User Name</th>
+    <th>User</th>
+    <th>Name</th>
     <th></th>
   </tr>
 
 <% @players.each{ |player| %>
   <tr>
     <td><%= player.user.screen_name %></td>
+    <td><%= player.user.name %></td>
     <td><%= link_to t( "menu.show" ), action: "show", id: player.id %></td>
   </tr>
 <% } %>

@@ -5,6 +5,7 @@ class MyController < ApplicationController
   # index #
   #-------#
   def index
+   @companies = Company.where( user_id: session[:user_id] ).order( "created_at DESC" ).all
   end
 
   #------------#
@@ -22,10 +23,17 @@ class MyController < ApplicationController
     @player.user_id = session[:user_id]
 
     if @player.save
-      redirect_to( { action: "index" }, notice: "プレイヤー登録が完了しました。" )
+      redirect_to( { action: "show_player" }, notice: "プレイヤーの登録が完了しました。" )
     else
       render action: "new_player"
     end
+  end
+
+  #-------------#
+  # show_player #
+  #-------------#
+  def show_player
+    @player = Player.where( user_id: session[:user_id] ).includes( :user ).first
   end
 
   #-------------#
@@ -42,50 +50,58 @@ class MyController < ApplicationController
     @player = Player.where( user_id: session[:user_id] ).first
 
     if @player.update_attributes( params[:player] )
-      redirect_to( { action: "index" }, notice: "プレイヤーの更新が完了しました。" )
+      redirect_to( { action: "show_player" }, notice: "プレイヤーの更新が完了しました。" )
     else
       render action: "edit_player"
     end
   end
 
-  #-----------------#
-  # new_corporation #
-  #-----------------#
-  def new_corporation
-    @corporation = Corporation.new
+  #-------------#
+  # new_company #
+  #-------------#
+  def new_company
+    @company = Company.new
+    @company.content = File.read( "#{Rails.root}/app/views/my/company_template.txt", encoding: Encoding::UTF_8 )
   end
 
-  #-------------------#
-  # entry_corporation #
-  #-------------------#
-  def entry_corporation
-    @corporation = Corporation.new( params[:corporation] )
-    @corporation.user_id = session[:user_id]
+  #---------------#
+  # entry_company #
+  #---------------#
+  def entry_company
+    @company = Company.new( params[:company] )
+    @company.user_id = session[:user_id]
 
-    if @corporation.save
-      redirect_to( { action: "index" }, notice: "コーポレーション登録が完了しました。" )
+    if @company.save
+      redirect_to( { action: "show_company", id: @company.id }, notice: "カンパニーの登録が完了しました。" )
     else
-      render action: "new_corporation"
+      render action: "new_company"
     end
   end
 
-  #------------------#
-  # edit_corporation #
-  #------------------#
-  def edit_corporation
-    @corporation = Corporation.where( user_id: session[:user_id] ).first
+  #--------------#
+  # show_company #
+  #--------------#
+  def show_company
+    @company = Company.where( id: params[:id], user_id: session[:user_id] ).first
   end
 
-  #--------------------#
-  # update_corporation #
-  #--------------------#
-  def update_corporation
-    @corporation = Corporation.where( user_id: session[:user_id] ).first
+  #--------------#
+  # edit_company #
+  #--------------#
+  def edit_company
+    @company = Company.where( id: params[:id], user_id: session[:user_id] ).first
+  end
 
-    if @corporation.update_attributes( params[:corporation] )
-      redirect_to( { action: "index" }, notice: "コーポレーションの更新が完了しました。" )
+  #----------------#
+  # update_company #
+  #----------------#
+  def update_company
+    @company = Company.where( id: params[:id], user_id: session[:user_id] ).first
+
+    if @company.update_attributes( params[:company] )
+      redirect_to( { action: "show_company", id: @company.id }, notice: "カンパニーの更新が完了しました。" )
     else
-      render action: "edit_corporation"
+      render( action: "edit_company" )
     end
   end
 

@@ -1,0 +1,16 @@
+
+<p>
+  <b>Name:</b><%= @company.name %>
+</p>
+
+<p>
+  <b>Email:</b><%= @company.email %>
+</p>
+
+<p>
+  <b>Content:</b><br />
+  <%= raw show_markdown( @company.content ) %>
+</p>
+
+<%= link_to "MyPage", action: "index" %>
+| <%= link_to "Edit", { action: "edit_company", id: @company.id }, style: "display: inline;" %>

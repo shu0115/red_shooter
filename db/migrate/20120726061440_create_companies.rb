@@ -1,7 +1,8 @@
-class CreatePlayers < ActiveRecord::Migration
+class CreateCompanies < ActiveRecord::Migration
   def change
-    create_table :players do |t|
+    create_table :companies do |t|
       t.integer :user_id
+      t.string :name
       t.string :email
       t.text :content
 

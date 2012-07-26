@@ -1,0 +1,16 @@
+
+<p>
+  <b>Name:</b><%= @player.user.screen_name %>
+</p>
+
+<p>
+  <b>Email:</b><%= @player.email %>
+</p>
+
+<p>
+  <b>Content:</b><br />
+  <%= raw show_markdown( @player.content ) %>
+</p>
+
+<%= link_to "MyPage", action: "index" %>
+| <%= link_to "Edit", { action: "edit_player" }, style: "display: inline;" %>

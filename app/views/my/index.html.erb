@@ -1,18 +1,38 @@
 
 <ul class="nav nav-tabs nav-stacked">
-  <li class="row span3 offset1 padding10">
+  <li class="row span8 offset1 padding10">
     <% if Player.where( user_id: session[:user_id] ).exists? %>
-      <%= link_to "Edit Player", action: "edit_player" %>
+      Player：
+      <%= link_to "Show", { action: "show_player" }, style: "display: inline;" %>
+      <%= link_to "Edit", { action: "edit_player" }, style: "display: inline;" %>
     <% else %>
       <%= link_to "Entry Player", action: "new_player" %>
     <% end %>
   </li>
+</ul>
 
-  <li class="row span3 offset1 padding10">
-    <% if Corporation.where( user_id: session[:user_id] ).exists? %>
-      <%= link_to "Edit Corporation", action: "edit_corporation" %>
-    <% else %>
-      <%= link_to "Entry Corporation", action: "new_corporation" %>
-    <% end %>
+<ul class="nav nav-tabs nav-stacked">
+  <li class="row span2 offset1 padding10">
+    <%= link_to "Entry Company", action: "new_company" %>
   </li>
 </ul>
+
+<table class="offset1">
+  <thead>
+    <tr>
+      <th class="span4">Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <% @companies.each{ |company| %>
+  <tbody>
+    <tr>
+      <td><%= company.name %></td>
+      <td><%= link_to "Show", { action: "show_company", id: company.id }, style: "display: inline;" %></td>
+      <td><%= link_to "Edit", { action: "edit_company", id: company.id }, style: "display: inline;" %></td>
+    </tr>
+  </tbody>
+  <% } %>
+</table>

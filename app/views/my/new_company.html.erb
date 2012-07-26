@@ -1,7 +1,12 @@
 
-<h1>Entry Player</h1>
+<h1>Entry Company</h1>
 
-<%= form_for :player, url: { action: "entry_player" } do |f| %>
+<%= form_for :company, url: { action: "entry_company" } do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
   <div class="field">
     <%= f.label :email %>
     <%= f.text_field :email %>

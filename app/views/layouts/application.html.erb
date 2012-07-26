@@ -17,7 +17,7 @@
           <li class="<%= params[:controller] == 'top' ? 'active' : '' %>"><%= link_to Settings.app_name, :root, class: "brand" %></li>
           <% unless session[:user_id].blank? %>
             <%# ログイン済み %>
-            <li><%= link_to_unless( current_user.screen_name.blank?, image_tag( current_user.image, size: "20x20" ), "https://twitter.com/#!/#{current_user.screen_name}", target: "_blank" ) %></li>
+            <li><%= link_to_unless( current_user.screen_name.blank?, image_tag( current_user.image, size: "20x20" ), "#{Settings.provider_page}#{current_user.screen_name}", target: "_blank" ) %></li>
             <li class="<%= params[:controller] == 'players' ? 'active' : '' %>"><%= link_to( "Players", { controller: "players" } ) %></li>
             <li class="<%= params[:controller] == 'jobs' ? 'active' : '' %>"><%= link_to( "Jobs", { controller: "jobs" } ) %></li>
             <li class="<%= params[:controller] == 'my' ? 'active' : '' %>"><%= link_to( "MyPage", { controller: "my" } ) %></li>
